@@ -1,3 +1,6 @@
 export * from './Appointment'
 export * from './SectionTitle'
 export * from './PlusButton'
+export * from './Button'
+export * from './Badge'
+export * from './AppointmentCard'

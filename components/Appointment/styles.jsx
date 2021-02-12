@@ -24,17 +24,6 @@ export const AppointmentInfo = styled.View`
   flex: 1;
 `
 
-export const AppointmentDate = styled.Text`
-  background-color: ${props => props.isActive ? '#2A86FF' : '#E9F5FF'};
-  color: ${props => props.isActive ? '#FFFFFF' : '#4294FF'};
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 14px;
-  text-align: center;
-  width: 68px;
-  line-height: 30px;
-`
-
 export const GrayText = styled.Text`
   font-size: 16px;
   color: #8B979F;

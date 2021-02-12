@@ -1,21 +1,18 @@
 import React from 'react'
-import {
-  Avatar,
-  FullName,
-  GrayText,
-  AppointmentDate,
-  AppointmentInfo,
-  AppointmentItem,
-  AppointmentWrapper
-} from './styles'
+import { Avatar, FullName, GrayText, AppointmentInfo, AppointmentItem } from './styles'
+import { Badge } from '../Badge'
 
-export const Appointment = ({ user, diagnosis, isActive, time }) => (
-  <AppointmentItem>
-    <Avatar source={{ uri: user.avatar }} />
-    <AppointmentInfo>
-      <FullName>{user.fullName}</FullName>
-      <GrayText>{diagnosis}</GrayText>
-    </AppointmentInfo>
-    <AppointmentDate isActive={isActive}>{time}</AppointmentDate>
-  </AppointmentItem>
-)
+export const Appointment = ({ info, navigation }) => {
+  const { user, diagnosis, isActive, time } = info
+
+  return (
+    <AppointmentItem onPress={() => navigation.navigate('Patient', info)}>
+      <Avatar source={{ uri: user.avatar }} />
+      <AppointmentInfo>
+        <FullName>{user.fullName}</FullName>
+        <GrayText>{diagnosis}</GrayText>
+      </AppointmentInfo>
+      <Badge type={isActive ? 'main' : 'outline'}>{time}</Badge>
+    </AppointmentItem>
+  )
+}

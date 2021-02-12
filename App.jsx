@@ -1,82 +1,33 @@
 import React from 'react'
-import styled from 'styled-components/native'
+// import 'react-native-gesture-handler'
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
 
-import { Appointment, PlusButton, SectionTitle } from './components'
+import { HomeScreen, PatientScreen } from './screens'
 
-const items = [
-  {
-    time: '14:30',
-    diagnosis: 'Стерелизация',
-    isActive: true,
-    user: {
-      fullName: 'MALADOY',
-      avatar: 'https://cutt.ly/bkvbbIh'
-    }
+const Stack = createStackNavigator()
+
+const getHeaderStyle = (title) => ({
+  title: title,
+  headerTintColor: '#2A86FF',
+  headerTitleStyle: {
+    fontWeight: 'bold'
   },
-  {
-    time: '17:30',
-    diagnosis: 'Стерелизация',
-    user: {
-      fullName: 'Otricala',
-      avatar: 'https://cutt.ly/bkvbbIh'
-    }
+  headerStyle: {
+    elevation: 0.8,
+    shadowOpacity: 0.8
   }
-]
-
-const sections = [
-  {
-    title: '14 сентября',
-    data: items
-  },
-  {
-    title: '15 сентября',
-    data: items
-  },
-  {
-    title: '16 сентября',
-    data: items
-  },
-  {
-    title: '17 сентября',
-    data: items
-  },
-  {
-    title: '18 сентября',
-    data: items
-  },
-  {
-    title: '19 сентября',
-    data: items
-  }
-]
+})
 
 export default function App() {
   return (
-    <Container>
-      <AppointmentsList
-        sections={sections}
-        keyExtractor={(_, index) => index}
-        renderItem={({ item }) => <Appointment {...item} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <ListTitle>{title}</ListTitle>
-        )}
-      />
-      <PlusButton />
-    </Container>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen name='Home' component={HomeScreen} options={getHeaderStyle('Пациеты')} />
+        <Stack.Screen name='Patient' component={PatientScreen} options={getHeaderStyle('Карта пациета')} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
 
-const ListTitle = styled(SectionTitle)`
-  margin-top: 20px;
-`
-
-
-const AppointmentsList = styled.SectionList`
-  padding: 0 20px;
-`
-
-const Container = styled.SafeAreaView`
-  flex: 1;
-  margin-top: 50px;
-`
