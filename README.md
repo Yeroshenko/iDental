@@ -1,2 +1,2 @@
 # iDental
-Dental mobile app
+## Server: https://github.com/Yeroshenko/backand-iDental
