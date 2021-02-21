@@ -39,13 +39,13 @@ const DATA = [
 ]
 
 export const PatientScreen = ({ navigation, route }) => {
-  const { user } = route.params
+  const { patient } = route.params
 
   return (
     <Container>
       <PatientCard>
-        <PatientName>{user.fullName}</PatientName>
-        <PatientPhone>{user.phone}</PatientPhone>
+        <PatientName>{patient.fullName}</PatientName>
+        <PatientPhone>{patient.phone}</PatientPhone>
         <PatientButtons>
           <Button>Формула зубов</Button>
           <PatientCallButton>

@@ -1,9 +1,5 @@
 import styled from 'styled-components/native'
 
-export const AppointmentWrapper = styled.View`
-
-`
-
 export const AppointmentItem = styled.TouchableOpacity`
   padding: 20px 0;
   flex-direction: row;
@@ -13,10 +9,21 @@ export const AppointmentItem = styled.TouchableOpacity`
   border-bottom-color: #F3F3F3;
 `
 
-export const Avatar = styled.Image`
+export const Avatar = styled.View`
   width: 45px;
   height: 45px;
-  border-radius: 40px;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ background }) => background};
+`
+
+export const AvatarLetter = styled.Text`
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  color: ${({ color }) => color};
 `
 
 export const AppointmentInfo = styled.View`
