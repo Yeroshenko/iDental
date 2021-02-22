@@ -6,11 +6,21 @@ import { AppointmentsList, Container, ListTitle } from './styles'
 
 export const HomeScreen = ({ navigation }) => {
   const [data, setData] = useState([])
+  const [refreshing, setRefreshing] = useState(false)
 
-  useEffect(() => {
+  const toggleRefreshing = () => setRefreshing(state => !state)
+
+  const fetchAppointments = () => {
+    toggleRefreshing()
+
     appointmentsApi.getAll()
       .then(res => setData(res.data))
       .catch(err => console.log(err))
+      .finally(toggleRefreshing)
+  }
+
+  useEffect(() => {
+    fetchAppointments()
   }, [])
 
   return (
@@ -18,6 +28,8 @@ export const HomeScreen = ({ navigation }) => {
       {data.length > 0 &&
         <AppointmentsList
           sections={data}
+          onRefresh={fetchAppointments}
+          refreshing={refreshing}
           keyExtractor={(_, index) => index}
           renderItem={({ item }) => <Appointment navigation={navigation} info={item} />}
           renderSectionHeader={({ section: { title } }) => (
@@ -25,7 +37,7 @@ export const HomeScreen = ({ navigation }) => {
           )}
         />
       }
-      <PlusButton />
+      <PlusButton onPress={() => alert('pressed')} />
     </Container>
   )
 }

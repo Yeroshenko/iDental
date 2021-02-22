@@ -2,16 +2,19 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { Ionicons } from '@expo/vector-icons'
 
-export const PlusButton = () => (
-  <Circle style={{
-    shadowColor: '#2A86FF',
-    shadowRadius: 2.4,
-    shadowOpacity: 0.7,
-    elevation: 4
-  }}>
+
+export const PlusButton = ({ onPress }) => (
+  <Circle style={shadowStyles} onPress={onPress}>
     <Ionicons name='ios-add' size={36} color='#FFF' />
   </Circle>
 )
+
+const shadowStyles = {
+  shadowColor: '#2A86FF',
+  shadowRadius: 2.4,
+  shadowOpacity: 0.7,
+  elevation: 4
+}
 
 const Circle = styled.TouchableOpacity`
   position: absolute;
